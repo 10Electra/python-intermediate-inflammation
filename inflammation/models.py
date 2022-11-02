@@ -49,6 +49,8 @@ def patient_normalise(data):
     Args:
         data (np.ndarray): 2D array of input data
     """
+    if np.any(data < 0):
+        raise ValueError('Inflammation values should not be zero')
     maxes = np.nanmax(data, axis=1)
     with np.errstate(invalid='ignore', divide='ignore'):
         normalised = data / maxes[:, np.newaxis]
