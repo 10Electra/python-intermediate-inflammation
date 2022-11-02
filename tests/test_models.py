@@ -51,9 +51,26 @@ def test_daily_min(test, expected):
 
 
 def test_daily_min_string():
-    """_summary_
+    """ Test for TypeError when we pass a string
     """
     from inflammation.models import daily_min
 
     with pytest.raises(TypeError):
-        error_exptected = daily_min([["abc"], ["def"]])
+        error_expected = daily_min([["abc"], ["def"]])
+
+
+@pytest.mark.parametrize(
+    "test, expected",
+    [
+        ([[1, 2, 3], [4, 5, 6], [7, 8, 9]], [[0.33, 0.67, 1], [0.67, 0.83, 1], [0.78, 0.89, 1]])
+    ]
+)
+def test_patient_normalise(test, expected):
+    """Test normalisations works
+
+    Args:
+        test (array): 2D array provided by the pytest decorator
+        expeted (array): 2D array provided by the pytest decorator
+    """
+    from inflammation.models import patient_normalise
+    npt.assert_almost_equal(patient_normalise(np.array(test)), np.array(expected), decimal=2)
