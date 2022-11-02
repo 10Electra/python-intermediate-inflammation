@@ -41,3 +41,13 @@ def daily_min(data):
     :param data: 2D Numpy array containing inflammation data
     :returns: A one-dimensional Numpy array containing the min value of each column"""
     return np.min(data, axis=0)
+
+
+def patient_normalise(data):
+    """Normalise patient data from 2D array of inflammation data
+
+    Args:
+        data (np.ndarray): 2D array of input data
+    """
+    maxes = np.max(data, axis=1)
+    return data / maxes[:, np.newaxis]
