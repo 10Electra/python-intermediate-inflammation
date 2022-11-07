@@ -27,6 +27,15 @@ def daily_mean(data):
     return np.mean(data, axis=0)
 
 
+def daily_std(data):
+    """Calculate the standard deviation of a 2D inflammation data array
+
+    Args:
+        data (np.ndarray): Input inflammation data
+    """
+    return np.std(data,axis=0)
+
+
 def daily_max(data):
     """Calculate the daily max of a 2D inflammation data array.
 
