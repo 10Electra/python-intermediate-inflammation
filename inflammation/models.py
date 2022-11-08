@@ -9,28 +9,58 @@ and each column represents a single day across all patients.
 
 import numpy as np
 
-
-class Patient:
-    def __init__(self, name) -> None:
-        self.name = name
-        self.observations = []
+class Observation:
+    def __init__(self, day: int, value, doctor=None) -> None:
+        self.day = day
+        self.value = value
+        self.doctor = doctor
     
-    def add_observation(self,value, day=None):
-        if day is None:
-            try:
-                day = self.observations[-1]['day'] + 1
-            except IndexError:
-                day = 0
-        
-        new_observation = {
-            'day': day,
-            'value': value
-        }
-        self.observations.append(new_observation)
-        return new_observation
+    def __str__(self) -> str:
+        return str(self.value)
+
+
+class Person:
+    def __init__(self,name: str) -> None:
+        self.name = name
     
     def __str__(self) -> str:
         return self.name
+
+
+class Patient(Person):
+    def __init__(self, name: str, observations=None) -> None:
+        super().__init__(name)
+        if observations is not None:
+            self.observations = observations
+        else:
+            self.observations = []
+
+    @property
+    def last_observation(self):
+        return self.observations[-1]
+    
+    def add_observation(self,value, day=None, doctor=None):
+        if day is None:
+            try:
+                day = self.observations[-1].day + 1
+            except IndexError:
+                day = 0
+        
+        new_observation = Observation(day, value, doctor)
+        if doctor is not None:
+            doctor.made_observation(new_observation,self)
+        self.observations.append(new_observation)
+        return new_observation
+
+
+class Doctor(Person):
+    def __init__(self, name: str, patients: list) -> None:
+        super().__init__(name)
+        self.patients = patients
+        self.observations_made = []
+
+    def made_observation(self, observation, patient):
+        self.observations_made.append((observation,patient))
 
 
 def load_csv(filename):
