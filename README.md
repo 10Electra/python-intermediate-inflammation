@@ -1,6 +1,10 @@
-# Introduction
+# Inflam
+[Continuous Integration build in GitHub Actions](https://https://github.com/10Electra/python-intermediate-inflammation/workflows/CI/badge.svg?branch=main)
 
-This is a template software project repository used by the [Intermediate Research Software Development Skills In Python](https://github.com/carpentries-incubator/python-intermediate-development).
+## Introduction
+Inflam is a data management system written in Python that manages trial data used in clinical inflammation studies.
+
+This project is a template software project repository used by the [Intermediate Research Software Development Skills In Python](https://github.com/carpentries-incubator/python-intermediate-development).
 
 ## Purpose
 
@@ -15,3 +19,8 @@ Several tests have been implemented already, some of which are currently failing
 These failing tests set out the requirements for the additional code to be implemented during the workshop.
 
 The tests should be run using `pytest`, which will be introduced during the workshop.
+
+## Prerequisites
+Inflam requires the following Python packages:
+
+- [NumPy](https://numpy.org)
