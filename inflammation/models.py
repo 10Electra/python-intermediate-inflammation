@@ -28,9 +28,12 @@ class Person:
 
 
 class Patient(Person):
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str, observations=None) -> None:
         super().__init__(name)
-        self.observations = []
+        if observations is not None:
+            self.observations = observations
+        else:
+            self.observations = []
 
     @property
     def last_observation(self):

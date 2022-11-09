@@ -23,3 +23,8 @@ def visualize(data_dict):
     fig.tight_layout()
 
     plt.show()
+
+def display_patient_record(patient):
+    print('The patient\'s name is {} and their observations are as follows:'.format(patient.name))
+    for observation in patient.observations:
+        print('Observation on day {}: {}'.format(observation.day, observation.value))
