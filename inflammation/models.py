@@ -72,7 +72,7 @@ def load_csv(filename):
     return np.loadtxt(fname=filename, delimiter=',')
 
 
-def daily_mean(data):
+def daily_mean(data) -> np.ndarray:
     """Calculate the daily mean of a 2D inflammation data array.
 
     :param data: 2D Numpy array containing inflammation data
@@ -80,7 +80,7 @@ def daily_mean(data):
     return np.mean(data, axis=0)
 
 
-def daily_std(data):
+def daily_std(data) -> np.ndarray:
     """Calculate the standard deviation of a 2D inflammation data array
 
     Args:
@@ -89,7 +89,7 @@ def daily_std(data):
     return np.std(data,axis=0)
 
 
-def daily_max(data):
+def daily_max(data) -> np.ndarray:
     """Calculate the daily max of a 2D inflammation data array.
 
     :param data: 2D Numpy array containing inflammation data
@@ -97,7 +97,7 @@ def daily_max(data):
     return np.max(data, axis=0)
 
 
-def daily_min(data):
+def daily_min(data) -> np.ndarray:
     """Calculate the daily min of a 2D inflammation data array.
 
     :param data: 2D Numpy array containing inflammation data
@@ -105,7 +105,7 @@ def daily_min(data):
     return np.min(data, axis=0)
 
 
-def patient_normalise(data):
+def patient_normalise(data) -> np.ndarray:
     """Normalise patient data from 2D array of inflammation data
 
     Args:
