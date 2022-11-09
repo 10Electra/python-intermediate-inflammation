@@ -56,7 +56,10 @@ class Patient(Person):
 class Doctor(Person):
     def __init__(self, name: str, patients: list) -> None:
         super().__init__(name)
-        self.patients = patients
+        if patients is None:
+            self.patients = []
+        else:
+            self.patients = patients
         self.observations_made = []
 
     def made_observation(self, observation, patient):
